@@ -1,19 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Demo\DemoController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(DemoController::class)->group(function (){
-    Route::get('/about', 'Index')->middleware('check');
-    //Route::get('/about', 'Index')->name('about.page');
-    Route::get('/contact', 'ContactMethod')->name('contact.page');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Route::controller(DemoController::class)->group(function (){
-  //  Route::get('/about', [DemoController::class, 'Index'])->name('about.page');
-    //Route::get('/contact', [DemoController::class, 'ContactMethod']);
-//});
+require __DIR__.'/auth.php';
