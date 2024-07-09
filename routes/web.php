@@ -8,9 +8,15 @@ Route::get('/', function () {
 });
 
 Route::controller(DemoController::class)->group(function (){
-    Route::get('/about', [DemoController::class, 'Index']);
-    Route::get('/contact', [DemoController::class, 'ContactMethod']);
+    Route::get('/about', 'Index');
+    //Route::get('/about', 'Index')->name('about.page');
+    Route::get('/contact', 'ContactMethod')->name('contact.page');
 });
+
+//Route::controller(DemoController::class)->group(function (){
+  //  Route::get('/about', [DemoController::class, 'Index'])->name('about.page');
+    //Route::get('/contact', [DemoController::class, 'ContactMethod']);
+//});
 
 //Route::get('/contact', function () {
   //  return view('contact');
