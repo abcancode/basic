@@ -12,7 +12,7 @@
                             <form method="post" action="{{ route('store.profile') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Full Name</label>
                                     <div class="col-sm-10">
                                         <input name="name" class="form-control" type="text"
                                             value="{{ $editData->name }}" id="example-text-input">
@@ -20,7 +20,7 @@
                                 </div>
                                 <!-- end row -->
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">User Email</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Email Address</label>
                                     <div class="col-sm-10">
                                         <input name="email" class="form-control" type="text"
                                             value="{{ $editData->email }}" id="example-text-input">

@@ -13,7 +13,12 @@ class AdminController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        $notification = array(
+            'message' => 'User Logged out Successfully', 
+            'alert-type' => 'warning'
+        );
+
+        return redirect('/login')->with($notification);
     }
     
     public function Profile()
